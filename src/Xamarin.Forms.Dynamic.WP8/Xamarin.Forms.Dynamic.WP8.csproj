@@ -16,9 +16,6 @@
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{76F1466A-8B6D-4E39-A767-685A06062A39};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
-    <NuGetPackageImportStamp>260d513c</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -85,42 +82,53 @@
     <Compile Include="..\Xamarin.Forms.Dynamic.Desktop\BindingObjectExtensions.cs">
       <Link>BindingObjectExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Xamarin.Forms.Dynamic.Desktop\JModel.cs">
-      <Link>JModel.cs</Link>
+    <Compile Include="..\Xamarin.Forms.Dynamic.Desktop\DictionaryModel.cs">
+      <Link>DictionaryModel.cs</Link>
     </Compile>
-    <Compile Include="..\Xamarin.Forms.Dynamic.Desktop\JParameterInfo.cs">
-      <Link>JParameterInfo.cs</Link>
+    <Compile Include="..\Xamarin.Forms.Dynamic.Desktop\DynamicParameterInfo.cs">
+      <Link>DynamicParameterInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Xamarin.Forms.Dynamic.Desktop\JPropertyGetterInfo.cs">
-      <Link>JPropertyGetterInfo.cs</Link>
+    <Compile Include="..\Xamarin.Forms.Dynamic.Desktop\DynamicPropertyInfo.cs">
+      <Link>DynamicPropertyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Xamarin.Forms.Dynamic.Desktop\JPropertyInfo.cs">
-      <Link>JPropertyInfo.cs</Link>
+    <Compile Include="..\Xamarin.Forms.Dynamic.Desktop\DynamicTypeInfo.cs">
+      <Link>DynamicTypeInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Xamarin.Forms.Dynamic.Desktop\JPropertyMethodInfo.cs">
-      <Link>JPropertyMethodInfo.cs</Link>
+    <Compile Include="..\Xamarin.Forms.Dynamic.Desktop\JsonCommand.cs">
+      <Link>JsonCommand.cs</Link>
     </Compile>
-    <Compile Include="..\Xamarin.Forms.Dynamic.Desktop\JPropertySetterInfo.cs">
-      <Link>JPropertySetterInfo.cs</Link>
+    <Compile Include="..\Xamarin.Forms.Dynamic.Desktop\JsonExtensions.cs">
+      <Link>JsonExtensions.cs</Link>
     </Compile>
-    <Compile Include="JTypeInfo.cs" />
+    <Compile Include="..\Xamarin.Forms.Dynamic.Desktop\JsonModel.cs">
+      <Link>JsonModel.cs</Link>
+    </Compile>
+    <Compile Include="DictionaryModel.Reflectable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Xamarin.Forms.Core, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.Master.1.2.2.8690\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.1.5.0.6447\lib\wpa81\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.Master.1.2.2.8690\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\packages\Xamarin.Forms.1.5.0.6447\lib\wpa81\Xamarin.Forms.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Xamarin.Forms.Xaml, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.Master.1.2.2.8690\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    <Reference Include="Xamarin.Forms.Platform.WinRT">
+      <HintPath>..\packages\Xamarin.Forms.1.5.0.6447\lib\wpa81\Xamarin.Forms.Platform.WinRT.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform.WinRT.Phone">
+      <HintPath>..\packages\Xamarin.Forms.1.5.0.6447\lib\wpa81\Xamarin.Forms.Platform.WinRT.Phone.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.1.5.0.6447\lib\wpa81\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -138,7 +146,9 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Xamarin.Forms.Master.1.2.2.8690\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Master.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.Master.1.2.2.8690\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Master.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\packages\GitInfo.1.0.47-pre\build\GitInfo.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\GitInfo.1.0.47-pre\build\GitInfo.targets'))" />
   </Target>
-  <Import Project="..\packages\Xamarin.Forms.Master.1.2.2.8690\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Master.targets" Condition="Exists('..\packages\Xamarin.Forms.Master.1.2.2.8690\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Master.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\packages\GitInfo.1.0.47-pre\build\GitInfo.targets" Condition="Exists('..\packages\GitInfo.1.0.47-pre\build\GitInfo.targets')" />
 </Project>

@@ -13,12 +13,10 @@ namespace Xamarin.Forms.Dynamic
 	/// Provides a dynamic model based on a properties of 
 	/// key-value pairs.
 	/// </summary>
-	public class DictionaryModel : DynamicObject,
+	public partial class DictionaryModel : DynamicObject,
 		ICollection<KeyValuePair<string, object>>, IDictionary<string, object>,
-		INotifyCollectionChanged, INotifyPropertyChanged,
-		IReflectableType
+		INotifyCollectionChanged, INotifyPropertyChanged
 	{
-		ConcurrentDictionary<string, PropertyInfo> infos = new ConcurrentDictionary<string, PropertyInfo>();
 		readonly Dictionary<string, object> properties = new Dictionary<string, object>();
 
 		/// <summary>Event raised when the collection changes.</summary>
@@ -145,23 +143,6 @@ namespace Xamarin.Forms.Dynamic
 		{
 			this[binder.Name] = value;
 			return true;
-		}
-
-		#endregion
-
-		#region IReflectableType
-
-		/// <summary>
-		/// Retrieves an object that represents the type of this instance.
-		/// </summary>
-		public TypeInfo GetTypeInfo ()
-		{
-			return new DynamicTypeInfo (name => infos.GetOrAdd (name, key => new DynamicPropertyInfo (
-				  typeof (DictionaryModel),
-				  key,
-				  GetType (key),
-				  obj => GetValue ((DictionaryModel)obj, key),
-				  (obj, value) => SetValue ((DictionaryModel)obj, key, value))));
 		}
 
 		#endregion

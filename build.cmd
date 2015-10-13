@@ -18,8 +18,7 @@ md build\.nuget
 copy %CACHED_NUGET% build\.nuget\nuget.exe > nul
 
 :restore
-IF NOT EXIST build\packages.config goto run
-build\.nuget\NuGet.exe install build\packages.config -OutputDirectory build\packages -ExcludeVersion
+build\.nuget\NuGet.exe install src\Xamarin.Forms.Dynamic\packages.config -OutputDirectory build\packages -ExcludeVersion
 
 :run
 msbuild /nologo /v:minimal /p:WarningLevel=0 %1 %2 %3 %4 %5 %6 %7 %8 %9

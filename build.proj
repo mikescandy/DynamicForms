@@ -11,21 +11,36 @@
 		<NuGetExe Condition=" '$(NuGetExe)' == '' ">$(NuGetPath)\NuGet.exe</NuGetExe>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
+	<PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
 		<NuGetExe>nuget</NuGetExe>
 	</PropertyGroup>
 
-	<Target Name="Build" DependsOnTargets="GitVersion">
+	<Target Name="Build" DependsOnTargets="Clean;GitVersion">
+		<XmlPeek XmlInputPath="src\Xamarin.Forms.Dynamic\packages.config"
+				 Query="/packages/package[@id='Newtonsoft.Json']/@version">
+			<Output TaskParameter="Result" PropertyName="Newtonsoft" />
+		</XmlPeek>
+		<XmlPeek XmlInputPath="src\Xamarin.Forms.Dynamic\packages.config"
+				 Query="/packages/package[@id='Xamarin.Forms']/@version">
+			<Output TaskParameter="Result" PropertyName="Forms" />
+		</XmlPeek>
+
 		<PropertyGroup>
 			<Version>$(GitSemVerMajor).$(GitSemVerMinor).$(GitSemVerPatch)$(GitSemVerDashLabel)</Version>
-			<Args>-Version $(Version) -NoPackageAnalysis -NonInteractive -OutputDirectory out -Properties Configuration=$(Configuration)</Args>
+			<Args>-Version $(Version) -NoPackageAnalysis -NonInteractive -OutputDirectory out -Properties Configuration=$(Configuration);Newtonsoft=$(Newtonsoft);Forms=$(Forms)</Args>
 		</PropertyGroup>
 
-		<MakeDir Directories="out" Condition="!Exists('out')" />
-
-		<MSBuild Projects="src\Xamarin.Forms.Dynamic.sln" Properties="Configuration=$(Configuration);TrackFileAccess=$(TrackFileAccess)" />
-
+		<MSBuild Projects="src\Xamarin.Forms.Dynamic.sln" Properties="Configuration=$(Configuration)" />
+		<MakeDir Directories="out" Condition=" !Exists('out') " />
 		<Exec Command='"$(NuGetExe)" Pack "src\Xamarin.Forms.Dynamic.nuspec" $(Args)' />
+	</Target>
+	
+	<Target Name="Clean">
+		<Exec Command="rmdir out /s /q" Condition=" Exists('out') " />
+	</Target>
+
+	<Target Name="Push" DependsOnTargets="Build">	
+		<Exec Command='"$(NuGetExe)" Push "out\*.nupkg"' />
 	</Target>
 
 	<Import Project="build\packages\GitInfo\build\GitInfo.targets" />
