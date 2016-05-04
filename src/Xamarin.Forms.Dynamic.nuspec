@@ -1,44 +1,29 @@
-<?xml version="1.0"?>
-<package >
-	<metadata>
-		<id>Xamarin.Forms.Dynamic</id>
-		<version>0.1.0</version>
-		<authors>Daniel Cazzulino</authors>
-		<owners>Daniel Cazzulino</owners>
-		<licenseUrl>http://www.mobileessentials.org/license</licenseUrl>
-		<iconUrl>http://www.mobileessentials.org/img/mobessen/64.png</iconUrl>
-		<projectUrl>http://www.mobileessentials.org/</projectUrl>
-		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<description>Dynamically load XAML views and JSON view models with bi-directional data binding support into Xamarin.Forms apps.</description>
-		<copyright />
-		<dependencies>
-			<dependency id="Newtonsoft.Json" version="6.0.8" />
-			<dependency id="Xamarin.Forms" version="1.4.3.6358-pre2" />
-		</dependencies>
-	</metadata>
-	<files>
-		<!--PCL-->
-		<file src="Xamarin.Forms.Dynamic\bin\Debug\Xamarin.Forms.Dynamic.dll" target="lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10" />
-		<file src="Xamarin.Forms.Dynamic\bin\Debug\Xamarin.Forms.Dynamic.xml" target="lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10" />
-
-		<!--Android-->
-		<file src="Xamarin.Forms.Dynamic.Android\bin\Debug\Xamarin.Forms.Dynamic.dll" target="lib\MonoAndroid10" />
-		<file src="Xamarin.Forms.Dynamic.Android\bin\Debug\Xamarin.Forms.Dynamic.xml" target="lib\MonoAndroid10" />
-
-		<!--iPhone Unified-->
-		<file src="Xamarin.Forms.Dynamic.iOS\bin\Debug\Xamarin.Forms.Dynamic.dll" target="lib\Xamarin.iOS10" />
-		<file src="Xamarin.Forms.Dynamic.iOS\bin\Debug\Xamarin.Forms.Dynamic.xml" target="lib\Xamarin.iOS10" />
-
-		<!--iPhone Classic-->
-		<file src="Xamarin.Forms.Dynamic.iOS.Classic\bin\Debug\Xamarin.Forms.Dynamic.dll" target="lib\MonoTouch10" />
-		<file src="Xamarin.Forms.Dynamic.iOS.Classic\bin\Debug\Xamarin.Forms.Dynamic.xml" target="lib\MonoTouch10" />
-
-		<!--Disable these for now
-		<!- -Windows Phone 8- ->
-
-		<!- -WinRT Phone- ->
-    
-    <!- -WinRT Desktop- ->
-    -->
-	</files>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Xamarin.Forms.Dynamic</id>
+        <version>0.1.1</version>
+        <authors>Daniel Cazzulino</authors>
+        <owners>Daniel Cazzulino</owners>
+        <licenseUrl>http://www.mobileessentials.org/license</licenseUrl>
+        <projectUrl>http://www.mobileessentials.org/</projectUrl>
+        <iconUrl>http://www.mobileessentials.org/img/mobessen/64.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Dynamically load XAML views and JSON view models with bi-directional data binding support into Xamarin.Forms apps.</description>
+        <copyright />
+        <dependencies>
+            <dependency id="Xamarin.Forms" version="2.2.0.31" />
+            <dependency id="Newtonsoft.Json" version="8.0.3" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="Xamarin.Forms.Dynamic.Android\bin\Debug\Xamarin.Forms.Dynamic.dll" target="lib\MonoAndroid10\Xamarin.Forms.Dynamic.dll" />
+        <file src="Xamarin.Forms.Dynamic.Android\bin\Debug\Xamarin.Forms.Dynamic.xml" target="lib\MonoAndroid10\Xamarin.Forms.Dynamic.xml" />
+        <file src="Xamarin.Forms.Dynamic.iOS.Classic\bin\Debug\Xamarin.Forms.Dynamic.dll" target="lib\MonoTouch10\Xamarin.Forms.Dynamic.dll" />
+        <file src="Xamarin.Forms.Dynamic.iOS.Classic\bin\Debug\Xamarin.Forms.Dynamic.xml" target="lib\MonoTouch10\Xamarin.Forms.Dynamic.xml" />
+        <file src="Xamarin.Forms.Dynamic\bin\Debug\Xamarin.Forms.Dynamic.dll" target="lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Dynamic.dll" />
+        <file src="Xamarin.Forms.Dynamic\bin\Debug\Xamarin.Forms.Dynamic.xml" target="lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Dynamic.xml" />
+        <file src="Xamarin.Forms.Dynamic.iOS\bin\Debug\Xamarin.Forms.Dynamic.dll" target="lib\Xamarin.iOS10\Xamarin.Forms.Dynamic.dll" />
+        <file src="Xamarin.Forms.Dynamic.iOS\bin\Debug\Xamarin.Forms.Dynamic.xml" target="lib\Xamarin.iOS10\Xamarin.Forms.Dynamic.xml" />
+    </files>
 </package>

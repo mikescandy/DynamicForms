@@ -31,7 +31,7 @@ namespace Xamarin.Forms
 		/// </summary>
 		/// <param name="json">A string that contains JSON.</param>
 		/// <returns>A <see cref="JsonModel"/> populated from the string that contains JSON.</returns>
-		public new static JsonModel Parse (string json)
+		public new static JsonModel Parse (string fileName, string json)
 		{
 			throw new NotImplementedException ();
 		}

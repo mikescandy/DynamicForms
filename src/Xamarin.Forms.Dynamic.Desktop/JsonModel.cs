@@ -48,14 +48,24 @@ namespace Xamarin.Forms
 			}
 		}
 
-		/// <summary>
+	    public JsonModel(JToken token)
+	    {
+	        Initialize();
+
+	        Add(token);
+	    }
+
+	    /// <summary>
 		/// Load a model from a string that contains JSON.
 		/// </summary>
 		/// <param name="json">A string that contains JSON.</param>
 		/// <returns>A <see cref="JsonModel"/> populated from the string that contains JSON.</returns>
-		public new static JsonModel Parse (string json)
+		public new static JsonModel Parse (string fileName, string json)
 		{
-			return new JsonModel (JObject.Parse (json));
+            var model = new JsonModel(JObject.Parse(json));
+		    var i = model[fileName] as JsonModel; 
+
+	        return i ?? new JsonModel(new JObject());
 		}
 
 		/// <summary>

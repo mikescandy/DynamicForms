@@ -14,17 +14,68 @@ namespace Xamarin.Forms.Dynamic
 		[Fact]
 		public void when_mode_has_command_then_can_execute_it ()
 		{
-			var model = JsonModel.Parse (@"{
-	""Name"": ""Xamarin"",
-	""$commands"": {
-		""SetNameCommand"": {
-			""Name"": ""Rocks!""
-		}
-	}
-}
-");
+            //			var model = JsonModel.Parse ("", @"{
+            //	""Name"": ""Xamarin"",
+            //	""$commands"": {
+            //		""SetNameCommand"": {
+            //			""Name"": ""Rocks!""
+            //		}
+            //	}
+            //}
+            //");
 
-			Assert.Equal ("Xamarin", model.Property ("Name").Value.Value<string> ());
+
+            var model = JsonModel.Parse("CharacterPage.xaml", @"
+
+{
+  ""CharacterPage.xaml"": {
+    ""Character"": {
+      ""Name"": ""Scypia the Acolyte"",
+      ""CharacterClass"": ""Cleric"",
+      ""Alignment"": ""Neutral"",
+      ""Level"": 1,
+      ""Experience"": 0,
+      ""MaxHP"": 7,
+      ""CurrentHP"": 7,
+      ""HP"": ""7/7"",
+
+      ""Strength"": 9,
+      ""Dexterity"": 9,
+      ""Constitution"": 14,
+      ""Intelligence"": 14,
+      ""Wisdom"": 14,
+      ""Charisma"": 18,
+
+      ""Breath"": 16,
+      ""Poison"": 11,
+      ""Petrify"": 14,
+      ""Wands"": 12,
+      ""Spells"": 15,
+
+      ""ToHit"": 1,
+      ""Visible"": false
+    }
+  },
+  ""EditCharacterPage.xaml"": {
+    ""Name"": ""Scypia the Acolyte"",
+    ""CharacterClass"": ""Cleric"",
+    ""Alignments"": [ ""Law"", ""Neutrality"", ""Chaos"" ],
+    ""Alignment"": ""Neutral"",
+    ""Level"": 1,
+    ""Experience"": 0,
+    ""MaxHP"": 7,
+    ""Strength"": 9,
+    ""Dexterity"": 9,
+    ""Constitution"": 14,
+    ""Intelligence"": 14,
+    ""Wisdom"": 14,
+    ""Charisma"": 18
+  }
+  }
+
+            ");
+
+            Assert.Equal ("Xamarin", model.Property ("Name").Value.Value<string> ());
 
 			var info = model.GetTypeInfo ();
 			Assert.NotNull (info);
