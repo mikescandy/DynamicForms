@@ -63,17 +63,42 @@ namespace Xamarin.Forms
 		public new static JsonModel Parse (string fileName, string json)
 		{
             var model = new JsonModel(JObject.Parse(json));
-		    var i = model[fileName] as JsonModel; 
+            var pages = model["Pages"];
+            JsonModel res = null;
+            if (pages != null)
+            {
+               res = pages[fileName] as JsonModel;
+            }
+	        if (res == null) return model;
+                model.Remove("Pages");
 
-	        return i ?? new JsonModel(new JObject());
+            foreach (var item in model)
+	        {
+	            try
+	            {
+                    res.Add(item.Key, item.Value);
+	            }
+	            catch (Exception ex)
+	            {
+	                
+	            }
+	        }
+	       
+
+	        return res;
 		}
 
-		/// <summary>
-		/// Loads an model from a JSON reader.
-		/// </summary>
-		/// <param name="reader">A <see cref="JsonReader "/> that will be read for the content of the <see cref="JsonModel"/>.</param>
-		/// <returns>A <see cref="JsonModel"/> that contains the JSON that was read from the specified <see cref="JsonReader"/>.</returns>
-		public new static JsonModel Load (JsonReader reader)
+        public new static JsonModel Parse(string json)
+        {
+            return new JsonModel(JObject.Parse(json));
+        }
+
+        /// <summary>
+        /// Loads an model from a JSON reader.
+        /// </summary>
+        /// <param name="reader">A <see cref="JsonReader "/> that will be read for the content of the <see cref="JsonModel"/>.</param>
+        /// <returns>A <see cref="JsonModel"/> that contains the JSON that was read from the specified <see cref="JsonReader"/>.</returns>
+        public new static JsonModel Load (JsonReader reader)
 		{
 			return new JsonModel (JObject.Load (reader));
 		}

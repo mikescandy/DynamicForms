@@ -27,7 +27,7 @@ namespace Xamarin.Forms.Dynamic
 
             var model = JsonModel.Parse("CharacterPage.xaml", @"
 
-{
+{""Pages"":{
   ""CharacterPage.xaml"": {
     ""Character"": {
       ""Name"": ""Scypia the Acolyte"",
@@ -70,7 +70,36 @@ namespace Xamarin.Forms.Dynamic
     ""Intelligence"": 14,
     ""Wisdom"": 14,
     ""Charisma"": 18
-  }
+  }},
+  ""Character"": {
+      ""Name"": ""Scypia the Acolyte"",
+      ""CharacterClass"": ""Cleric"",
+      ""Alignment"": ""Neutral"",
+      ""Level"": 1,
+      ""Experience"": 0,
+      ""MaxHP"": 7,
+      ""CurrentHP"": 7,
+      ""HP"": ""7/7"",
+
+      ""Strength"": 9,
+      ""Dexterity"": 9,
+      ""Constitution"": 14,
+      ""Intelligence"": 14,
+      ""Wisdom"": 14,
+      ""Charisma"": 18,
+
+      ""Breath"": 16,
+      ""Poison"": 11,
+      ""Petrify"": 14,
+      ""Wands"": 12,
+      ""Spells"": 15,
+
+      ""ToHit"": 1,
+      ""Visible"": false
+    },
+""Item"": {
+      ""Name"": ""Item""
+    }
   }
 
             ");
