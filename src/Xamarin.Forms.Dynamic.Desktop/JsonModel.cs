@@ -16,7 +16,7 @@ namespace Xamarin.Forms
 	/// <summary>
 	/// Dynamic data-bindable JSON-based model.
 	/// </summary>
-	public class JsonModel : JObject, IReflectableType
+	public sealed class JsonModel : JObject, IReflectableType
 	{
 		static readonly FieldInfo propertiesField = typeof (JObject).GetField ("_properties", BindingFlags.NonPublic | BindingFlags.Instance);
 
