@@ -104,7 +104,7 @@ namespace Xamarin.Forms.Dynamic
 
             ");
 
-            Assert.Equal ("Xamarin", model.Property ("Name").Value.Value<string> ());
+            Assert.Equal ("Scypia the Acolyte", model.Property ("Character").Name);
 
 			var info = model.GetTypeInfo ();
 			Assert.NotNull (info);
