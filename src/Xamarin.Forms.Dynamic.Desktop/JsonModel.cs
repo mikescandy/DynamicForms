@@ -60,7 +60,7 @@ namespace Xamarin.Forms
 		/// </summary>
 		/// <param name="json">A string that contains JSON.</param>
 		/// <returns>A <see cref="JsonModel"/> populated from the string that contains JSON.</returns>
-		public new static JsonModel Parse (string fileName, string json)
+		public static JsonModel Parse (string fileName, string json)
 		{
             var model = new JsonModel(JObject.Parse(json));
             var pages = model["Pages"];

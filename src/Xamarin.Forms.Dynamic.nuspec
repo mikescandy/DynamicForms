@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
-        <id>Xamarin.Forms.Dynamic</id>
+        <id>Scandysoft.Forms.Dynamic</id>
         <version>0.1.2</version>
-        <authors>Daniel Cazzulino</authors>
-        <owners>Daniel Cazzulino</owners>
-        <licenseUrl>http://www.mobileessentials.org/license</licenseUrl>
+        <authors>Michele Scandura</authors>
+        <owners>Michele Scandura</owners>
+        <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>http://www.mobileessentials.org/</projectUrl>
         <iconUrl>http://www.mobileessentials.org/img/mobessen/64.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
