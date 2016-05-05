@@ -69,9 +69,23 @@ namespace Xamarin.Forms
             {
                res = pages[fileName] as JsonModel;
             }
-	        if (res != null) return res;
+	        if (res == null) return model;
                 model.Remove("Pages");
-	        return model;
+
+            foreach (var item in model)
+	        {
+	            try
+	            {
+                    res.Add(item.Key, item.Value);
+	            }
+	            catch (Exception ex)
+	            {
+	                
+	            }
+	        }
+	       
+
+	        return res;
 		}
 
         public new static JsonModel Parse(string json)
